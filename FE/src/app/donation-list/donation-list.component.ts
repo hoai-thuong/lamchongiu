@@ -15,6 +15,7 @@ interface Card {
   achievedPercentage: number;
   cardDetail: string;
   campaignCode: number;
+  cardStatus: string;
 }
 
 @Component({
@@ -33,7 +34,7 @@ export class DonationListComponent implements OnInit {
   }
 
   fetchCards(): void {
-    const apiUrl = 'https://localhost:7244/api/ViewDonationAndCampaign/GetAllCampaigns';
+    const apiUrl = 'https://localhost:7244/api/ViewDonationAndCampaign/GetAllCampaignsExceptNew';
 
     this.http.get<any[]>(apiUrl).subscribe(apiCards => {
       this.cards = apiCards.map(apiCard => this.transformApiCard(apiCard));
@@ -46,6 +47,7 @@ export class DonationListComponent implements OnInit {
       cardImage: apiCard.campaignThumbnail,
       cardTitle: apiCard.campaignTitle,
       cardPartner: apiCard.partnerName,
+      cardStatus: apiCard.campaignStatus || 'Pending',
       cardDayLeft: this.calculateDaysLeft(apiCard.startDate, apiCard.endDate),
       currentAmount: apiCard.currentAmount,
       targetAmount: apiCard.targetAmount,
@@ -53,6 +55,7 @@ export class DonationListComponent implements OnInit {
       achievedPercentage: parseFloat(((apiCard.currentAmount / apiCard.targetAmount) * 100).toFixed(2)),
       cardDetail: apiCard.campaignDescription,
       campaignCode: apiCard.campaignCode
+      
     };
   }
 

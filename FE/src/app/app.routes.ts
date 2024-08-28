@@ -8,6 +8,7 @@ import { StatisticComponent } from './admin-management/statistic/statistic.compo
 import { PaymentComponent } from './payment/payment.component';
 import { PartnersComponent } from './partners/partners.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { PaymentsuccessComponent } from './paymentsuccess/paymentsuccess.component';
 
 export const routes: Routes = [
   {
@@ -25,10 +26,14 @@ export const routes: Routes = [
   //},
   {
     path: 'payment/:campaignCode', component: PaymentComponent
+
   },
   {
     path: 'partners', component: PartnersComponent
-  }
+  },
+
+  { path: 'paymentsuccess', component: PaymentsuccessComponent },
+
 /*  { path: 'execute-payment', component: PaymentComponent }*/
 
 ]

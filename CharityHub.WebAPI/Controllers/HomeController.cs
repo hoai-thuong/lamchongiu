@@ -1,4 +1,5 @@
-﻿using CharityHub.Business.Services;
+﻿using System;
+using CharityHub.Business.Services;
 using CharityHub.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,14 +22,14 @@ namespace CharityHub.WebAPI.Controllers
         public async Task<IActionResult> CreatePaymentUrl(PaymentInformation model)
         {
             var url = await _payPalService.CreatePaymentUrl(model);
-
             return Redirect(url);
         }
 
         public IActionResult PaymentCallback()
         {
             var response = _payPalService.PaymentExecute(Request.Query);
-
+            Console.WriteLine(response);
+            
             return Json(response);
         }
     }

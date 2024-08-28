@@ -47,6 +47,8 @@ namespace CharityHub.WebAPI.Controllers.Donations
             var paymentUrl = await payPalService.CreatePaymentUrl(new PaymentInformation
             {
                 Amount = donation.Amount,
+                CampaignCode = donationRequest.CampaignCode,
+
                 DonationId = donationId // Pass DonationId to PayPal
             });
 
@@ -108,9 +110,16 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     dbContext.Donations.Update(existingDonation);
                     await dbContext.SaveChangesAsync();
                     await transaction.CommitAsync();
+                    var campaignCode = campaign?.CampaignCode;
 
                     // Return the updated donation object as JSON
-                    return Ok(mapper.Map<DonationDto>(existingDonation));
+                    // return Ok(mapper.Map<DonationDto>(existingDonation)); 
+                    // return Redirect("http://localhost:4200/paymentsuccess");
+                    // return Redirect($"http://localhost:4200/paymentsuccess?payment_method=PayPal&success=1&donation_id={donation.DonationId}&amount={donation.Amount}&campaign_code={donation.CampaignCode}");
+                    return Redirect($"http://localhost:4200/paymentsuccess?payment_method=PayPal&success=1&donation_id={donation.DonationId}&amount={donation.Amount}");
+
+
+                    // return Ok();
                 }
                 catch (Exception ex)
                 {

@@ -19,6 +19,7 @@ builder.Services.AddDbContext<CharityHubDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
 });
 
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -163,6 +164,8 @@ builder.Services.AddDbContext<CharityHubDbContext>(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddEndpointsApiExplorer();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CharityHub.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+930ca3b1d51ee41bb55ab05a495bd6b88e035326")]
 [assembly: System.Reflection.AssemblyProductAttribute("CharityHub.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CharityHub.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

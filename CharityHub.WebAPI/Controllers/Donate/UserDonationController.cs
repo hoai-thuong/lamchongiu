@@ -69,6 +69,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
 
             dbContext.Donations.Add(donation);
             await dbContext.SaveChangesAsync();
+            // return Ok("huhu");
 
             return Ok(new { PaymentUrl = paymentUrl });
         }
@@ -127,7 +128,8 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     await transaction.CommitAsync();
 
                     // Return the updated donation object as JSON
-                    return Ok(mapper.Map<DonationDto>(existingDonation));
+                    // return Ok(mapper.Map<DonationDto>(existingDonation));
+                    return Ok();
                 }
                 catch (Exception ex)
                 {

@@ -24,7 +24,7 @@ namespace CharityHub.Business.Services
             return total;
         }
 
-        public async Task<string> CreatePaymentUrl(PaymentInformation model)
+        public async Task<string> CreatePaymentUrl(PaymentInformation model  )
         {
             var envSandbox = new SandboxEnvironment(_configuration["Paypal:ClientId"], _configuration["Paypal:SecretKey"]);
             var client = new PayPalHttpClient(envSandbox);
@@ -80,56 +80,6 @@ namespace CharityHub.Business.Services
             return paymentUrl;
         }
 
-
-        //public PaymentResponse PaymentExecute(IQueryCollection collections)
-        //{
-        //    var response = new PaymentResponse();
-
-        //    foreach (var (key, value) in collections)
-        //    {
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("order_description"))
-        //        {
-        //            response.OrderDescription = value;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("transaction_id"))
-        //        {
-        //            response.TransactionId = value;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("order_id"))
-        //        {
-        //            response.OrderId = value;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("payment_method"))
-        //        {
-        //            response.PaymentMethod = value;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("success"))
-        //        {
-        //            response.Success = Convert.ToInt32(value) > 0;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("paymentid"))
-        //        {
-        //            response.PaymentId = value;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("payerid"))
-        //        {
-        //            response.PayerId = value;
-        //        }
-        //        // Nếu Amount có trong query string
-        //        if (!string.IsNullOrEmpty(key) && key.ToLower().Equals("amount"))
-        //        {
-        //            response.Amount = Convert.ToDouble(value);
-        //        }
-        //    }
-
-        //    return response;
-        //}
         public Donation PaymentExecute(IQueryCollection collections)
         {
             var donation = new Donation();
@@ -172,6 +122,7 @@ namespace CharityHub.Business.Services
                                 donation.DonationId = donationId; // Get the existing DonationId
                             }
                             break;
+
                     }
                 }
             }

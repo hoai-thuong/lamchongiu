@@ -34,6 +34,7 @@ export class PaymentComponent {
           if (response) {
             this.isSuccessful = true;
             this.donationTime = new Date().toLocaleString();
+            // this.router.navigate(['/payment-success']);
           } else {
             console.error('Payment execution failed.');
           }

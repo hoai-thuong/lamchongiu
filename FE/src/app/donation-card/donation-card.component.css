@@ -97,17 +97,45 @@
   color: #333;
 }
 
-.btn-primary {
-  background-color: #007bff;
+
+
+/* Styles for the button */
+.btn-primary, .btn-secondary {
+  font-size: 0.875rem; /* Default font size for buttons */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap; /* Ngăn nút xuống dòng */
+  transition: background-color 0.3s, color 0.3s;
 }
 
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
+.btn-primary {
+  background-color: #ce4b63;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #a87b9e;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  cursor: not-allowed; /* Indicates that the button is disabled */
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  color: white; /* Keeps text color same as background when disabled */
+}
+
+.btn-secondary:focus, .btn-secondary:active {
+  box-shadow: none; /* Removes focus/active outline for disabled state */
+}
+
+/* Ensures proper spacing and appearance */
+.card-current-target-text, .card-current-target-percent {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
